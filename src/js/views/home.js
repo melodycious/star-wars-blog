@@ -1,29 +1,35 @@
-import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
-import "../../styles/home.css";
+import React, { useContext, useEffect } from "react";
+import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
+import { SingleCard } from "./singleCard";
 
-export const Home = () => (
-	<>
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
-	</div>
-	<div className="container">
-			<div class="card" style={{"width": "18rem"}}>
-					<img src="..." class="card-img-top" alt="..." />
-					<div className="card-body">
-						<h5 className="card-title">Luke Skywalker</h5>
-						<p className="card-text">Gender: </p>
-						<p className="card-text">Hair-Color: </p>
-						<p className="card-text">Eye-Color: </p>
-						<a href="#" className="btn btn-primary">Learn More!</a>
-					</div>
-</div>
-	</div>
-	</>
-);
+export const Home = () => { 
+	const { store, actions } = useContext(Context);
+	useEffect (() => {
+		actions.getPeople()
+		console.log()
+
+	},[]);
+
+
+	return (
+		<div className="container">
+			<h1 className="text-danger my-title">Characters</h1>
+			<div className="my-carousel d-flex overflow-x-scroll">
+				{store.people?.map((item, index) => {
+					return (
+						<div className="card" style={{"width": "18rem"}} key={index}>
+							<img /* src={} */ className="card-img-top" alt="..." />
+							<div className="card-body">
+								<h5 className="card-title">{item.name}</h5>
+								<Link to="/singleCard">
+									<button className="btn btn-primary">Learn More!</button>
+								</Link>
+							</div>
+						</div>
+					);
+				})}
+			</div>
+		</div>
+	);
+};

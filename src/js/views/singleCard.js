@@ -1,27 +1,51 @@
-import React, { useState, useEffect, useContext } from "react";
-import PropTypes from "prop-types";
-import { Link, useParams } from "react-router-dom";
+import React, {useContext, useEffect} from "react";
+import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const SingleCard = props => {
-	const { store, actions } = useContext(Context);
-	const params = useParams();
+export const SingleCard = (props) => {
+
+  const { store, actions } = useContext(Context);
+
+	useEffect (() => {
+		actions.getSinglePeople(1)
+		console.log()
+
+	},[]);
+
 	return (
-		<div className="container-fluid">
+
+						<div className="card">
+							
+									<div className="card-body" style={{"width": "18rem"}} >
+										<img /* src={} */ className="card-img-top" alt="..." />
+									 <h5 className="card-title">{store.person.name}</h5>
+										{/* <p className="card-text">{item.gender} </p>
+										<p className="card-text">{item.hair_color}</p>
+										<p className="card-text">{item.eye_color}</p>
+										<p className="card-text">{item.height}</p>
+										<p className="card-text">{item.skin_color}</p>  */}
+									</div>
+								
+						</div>
+					
+
+            );
+
             
-			{ /* <h1 className="display-4">This will show the demo element: {store.demo[params.theid].title}</h1>
+          };
 
-			<hr className="my-4" />
 
-			<Link to="/">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
-					Back home
-				</span>
-			</Link> */ }
-		</div>
-	);
-};
 
-Single.propTypes = {
-	match: PropTypes.object
-};
+							{/* <div className="card" style={{"width": "18rem"}}>
+									<img src="..." className="card-img-top" alt="..." />
+									<div className="card-body">
+										
+										<h5 className="card-title">{props.name}</h5>
+										<p className="card-text">{props.gender} </p>
+										<p className="card-text">{props.hair_color}</p>
+										<p className="card-text">{props.eye_color}</p>
+										<p className="card-text">{props.height}</p>
+										<p className="card-text">{props.skin_color}</p>
+										
+									</div>
+							</div> */}
