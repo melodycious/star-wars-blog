@@ -1,32 +1,58 @@
 import React, {useContext, useEffect} from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const SingleCard = (props) => {
+export const SingleCard = () => {
 
   const { store, actions } = useContext(Context);
 
+  const {id} = useParams ();
+
 	useEffect (() => {
-		actions.getSinglePeople(1)
-		console.log()
+		actions.getSinglePeople(id)
+		console.log(id)
 
 	},[]);
 
 	return (
-
-						<div className="card">
-							
-									<div className="card-body" style={{"width": "18rem"}} >
-										<img /* src={} */ className="card-img-top" alt="..." />
-									 <h5 className="card-title">{store.person.name}</h5>
-										{/* <p className="card-text">{item.gender} </p>
-										<p className="card-text">{item.hair_color}</p>
-										<p className="card-text">{item.eye_color}</p>
-										<p className="card-text">{item.height}</p>
-										<p className="card-text">{item.skin_color}</p>  */}
+		
+				<div className="container-fluid">
+						<div className="container text-center">
+							<div className="row align-items-start">
+								<div className="col">
+									<img src="..." className="card-img-top" alt="..." />
+								</div>
+								<div className="col">
+									<h1 className="card-title">{store.person.name}</h1>
+									<p>
+									Dolor enim nisi adipisicing minim laboris minim sint cupidatat sunt occaecat. Nisi consectetur sunt ipsum adipisicing ad in commodo quis dolore. Do proident pariatur reprehenderit magna reprehenderit occaecat cupidatat ut qui. In ullamco consequat Lorem adipisicing sunt officia fugiat dolor enim aliqua anim occaecat.
+									</p>
+								</div>
+							</div>
+							<hr className="hr" />
+						<div className="row justify-content-center">
+									<div className="col-2">
+									{store.person.name}
 									</div>
-								
-						</div>
+									<div className="col-2">
+									{store.person.birth_year}
+									</div>
+									<div className="col-2">
+									{store.person.gender}
+									</div>
+									<div className="col-2">
+									{store.person.height}
+									</div>
+									<div className="col-2">
+									{store.person.skin_color}
+									</div>
+									<div className="col-2">
+									{store.person.eye_color}
+									</div>
+  						</div>
+				
+				</div> 
+				</div>
 					
 
             );
@@ -34,18 +60,3 @@ export const SingleCard = (props) => {
             
           };
 
-
-
-							{/* <div className="card" style={{"width": "18rem"}}>
-									<img src="..." className="card-img-top" alt="..." />
-									<div className="card-body">
-										
-										<h5 className="card-title">{props.name}</h5>
-										<p className="card-text">{props.gender} </p>
-										<p className="card-text">{props.hair_color}</p>
-										<p className="card-text">{props.eye_color}</p>
-										<p className="card-text">{props.height}</p>
-										<p className="card-text">{props.skin_color}</p>
-										
-									</div>
-							</div> */}

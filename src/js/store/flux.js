@@ -24,7 +24,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getSinglePeople: (uid) => {
 
-				fetch(`https://www.swapi.tech/api/people/${uid}`)
+				fetch("https://www.swapi.tech/api/people/"+uid)
 				.then(response => response.json())
 				.then(data => {
 					setStore({ person: data.result.properties });
