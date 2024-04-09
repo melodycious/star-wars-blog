@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			people:[],
 			planets:[],
 			person: {},
+			favorites: [],
 			
 			
 		},
@@ -35,9 +36,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
-			
-		}
-	};
-};
 
-export default getState;
+			// boton para añadir a favoritos
+
+			favoriteCheck: (name) => {
+				const favorites = getStore().favorites;
+				if (favorites.indexOf(name) !== -1) {
+				  getActions().removeFavorite(name);
+				}
+				getActions().addFavorite(name);
+			  },
+			
+			addFavorite: (name) => {
+				setStore({ favorites: getStore().favorites.concat(name) });
+			  },
+			  
+			  removeFavorite: (name) => {
+				setStore({
+					favorites: getStore().favorites.filter((element) => element !== name),
+				});
+			},
+		},
+		};
+	};
+
+	export default getState;
+
+
+		
