@@ -2,14 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const SingleCard = () => {
+export const CardPlanets = () => {
 
 	const { store, actions } = useContext(Context);
 
   const {id} = useParams ();
 
 	useEffect (() => {
-		actions.getSinglePeople(id)
+		actions.getSinglePlanet(id)
 		console.log(id)
 
 	},[]);
@@ -20,32 +20,32 @@ export const SingleCard = () => {
 						<div className="container text-center">
 							<div className="row align-items-start">
 								<div className="col">
-									<img src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} 
+									<img src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} 
 									     className="card-img-top" 
 										 style={{ maxWidth: "400px" }}
 										 alt="..." />
 								</div>
 								<div className="col">
-									<h1 className="card-title">{store.person.name}</h1>
+									<h1 className="card-title">{store.planet.name}</h1>
 									<hr className="hr" />
 						<div className="row justify-content-center">
 									<div className="col-12">
-									<b>Name: </b>{store.person.name}
+									<b>Name: </b>{store.planet.name}
 									</div>
 									<div className="col-12">
-									<b>Birth Year: </b>{store.person.birth_year}
+									<b>Diameter: </b>{store.planet.diameter}
 									</div>
 									<div className="col-12">
-									<b>Gender: </b>{store.person.gender}
+									<b>Climate: </b>{store.planet.climate}
 									</div>
 									<div className="col-12">
-									<b>Height: </b>{store.person.height}
+									<b>Terrain: </b>{store.planet.terrain}
 									</div>
 									<div className="col-12">
-									<b>Skin color: </b>{store.person.skin_color}
+									<b>Orbital Period: </b>{store.planet.orbital_period}
 									</div>
 									<div className="col-12">
-									<b>Eye color: </b>{store.person.eye_color}
+									<b>Rotation Period: </b>{store.planet.rotation_period}
 									</div>
 									<hr className="hr" />
 									

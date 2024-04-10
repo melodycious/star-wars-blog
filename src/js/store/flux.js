@@ -2,8 +2,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			people:[],
-			planets:[],
 			person: {},
+			planets:[],
+			planet: {},
 			favorites: [],
 			
 			
@@ -36,6 +37,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
+			getPlanets: () => {
+
+				fetch('https://www.swapi.tech/api/planets/')
+				.then(response => response.json())
+				.then(data => {
+					setStore({ planets: data.results });
+					console.log(data.results)
+				})
+				.catch(error => console.log('Error: ', error));
+
+
+			},
+
+			getSinglePlanet: (uid) => {
+
+				fetch("https://www.swapi.tech/api/planets/"+uid)
+				.then(response => response.json())
+				.then(data => {
+					setStore({ planet: data.result.properties });
+					console.log(data)
+				})
+				.catch(error => console.log('Error: ', error));
+
+
+			},
 
 			// boton para añadir a favoritos
 

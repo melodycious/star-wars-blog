@@ -15,36 +15,30 @@ export const Navbar = () => {
 			<img width="100" src={StarWars} />
 			</Link>
 
-			<div className="dropdown mx-5">
-        <button
-          className="btn btn-secondary dropdown-toggle"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Favorites {store.favorites.length}
-        </button>
-        <ul className="dropdown-menu">
-          {names
-            ? names.map((name) => (
-                <li key={name} className="dropdown-item">
-                  {name}
-                  <a id="remove" onClick={() => actions.removeFavorite(name)}>
-				  <i className="fas fa-trash me-3 pt-2"></i>
-                  </a>
-                </li>
-              ))
-            : null}
-        </ul>
-      </div>
-			
-	  <Link to="/demo">
-					<button className="btn btn-primary">Home</button>
-				</Link>
-	  </nav>
-			
-				
-			
+				<div className="dropdown mx-5">
+						<button
+						className="btn btn-dark dropdown-toggle"
+						type="button"
+						data-bs-toggle="dropdown"
+						aria-expanded="false"
+						>
+						Favorites {store.favorites.length}
+						</button>
+						<ul className="dropdown-menu">
+						{names
+							? names.map((name) => (
+								<li key={name} className="dropdown-item">
+								{name}
+									<a id="remove" onClick={() => actions.removeFavorite(name)}>
+									<i className="fas fa-trash me-3 pt-2"></i>
+									</a>
+								</li>
+							))
+							: null}
+						</ul>
+      			</div>
+	  	</nav>
+					
 		
 	);
 };
